@@ -13,7 +13,7 @@
     }
   ],
   "paths": {
-    "/users/{userId}": {
+    "/user/{userId}": {
       "parameters": [
         {
           "schema": {
@@ -151,7 +151,19 @@
                 "schema": {
                   "nullable": true
                 },
-                "examples": {}
+                "examples": {
+                  "New User Bob Fellow": {
+                    "value": {
+                      "id": 12,
+                      "firstName": "Bob",
+                      "lastName": "Fellow",
+                      "email": "bob.fellow@gmail.com",
+                      "dateOfBirth": "1996-08-24",
+                      "emailVerified": false,
+                      "createDate": "2020-11-18"
+                    }
+                  }
+                }
               }
             }
           },
@@ -236,7 +248,7 @@
         }
       ]
     },
-    "/book/search/{bookId}": {
+    "/book/search/id/{bookId}": {
       "parameters": [
         {
           "schema": {
@@ -264,6 +276,84 @@
         },
         "operationId": "get-book-search-bookId",
         "description": "Get book details"
+      }
+    },
+    "/book/purchase/{bookId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "bookId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "",
+        "operationId": "post-book-purchase-bookId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PurchaseResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PurchaseRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/book/add": {
+      "patch": {
+        "summary": "",
+        "operationId": "patch-admin-book-add",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "summary": "",
+        "operationId": "post-admin-book-add",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/admin/book/remove/{bookId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "bookId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "delete": {
+        "summary": "",
+        "operationId": "delete-admin-book-remove-bookId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     }
   },
@@ -335,6 +425,39 @@
           "email",
           "dateOfBirth"
         ]
+      },
+      "PurchaseResponse": {
+        "title": "PurchaseResponse",
+        "x-stoplight": {
+          "id": "bqcyf78fjklfr"
+        },
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "PurchaseRequest": {
+        "title": "PurchaseRequest",
+        "x-stoplight": {
+          "id": "5knkqqf5on8nw"
+        },
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "credential1": {
+            "type": "string"
+          },
+          "credential2": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "string"
+          }
+        }
       }
     }
   }
