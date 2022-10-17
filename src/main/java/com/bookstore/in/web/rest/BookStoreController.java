@@ -1,6 +1,8 @@
 package com.bookstore.in.web.rest;
 
 import com.bookstore.in.generateddomain.service.dto.BookDetails;
+import com.bookstore.in.generateddomain.service.dto.PurchaseRequest;
+import com.bookstore.in.generateddomain.service.dto.PurchaseResponse;
 import com.bookstore.in.service.BookStoreService;
 import com.bookstore.in.web.rest.api.BookStoreApi;
 import org.slf4j.Logger;
@@ -24,16 +26,28 @@ public class BookStoreController implements BookStoreApi {
     @Value("${message:Mesage}")
     private String nameOfService;
 
+    @Override
     public  ResponseEntity<List<BookDetails>> getBookSearch(String bookType) {
-        log.info("Name of Service : "+nameOfService);
+        log.info("Name of Service : {} ", nameOfService);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @Override
     public  ResponseEntity<BookDetails> getBookSearchBookId(String bookId) {
 
         BookDetails bookDetails = bookStoreService.getBookSearchBookId(bookId);
         return new ResponseEntity<>(bookDetails,HttpStatus.OK);
 
     }
+
+    @Override
+    public ResponseEntity<PurchaseResponse> postBookPurchaseBookId(String bookId, PurchaseRequest purchaseRequest) {
+        log.info("Request received for purchase Book with ID : {}", bookId);
+        PurchaseResponse response = bookStoreService.bookPurchase(bookId, purchaseRequest);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+
+    }
+
+
 
 }
