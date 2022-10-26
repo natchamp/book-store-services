@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class User_Details {
+public class UserDetailsDTO {
     @Id
     @Column(name = "id")
     private String id;

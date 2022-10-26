@@ -5,12 +5,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.request.NativeWebRequest;
-
-import java.util.Optional;
+import org.springframework.web.bind.annotation.*;
 
 public interface AdminApi {
 
@@ -27,8 +22,7 @@ public interface AdminApi {
                     @ApiResponse(responseCode = "200", description = "OK")
             }
     )
-    @RequestMapping(
-            method = RequestMethod.DELETE,
+    @DeleteMapping(
             value = "/admin/book/remove/{bookId}"
     )
     default ResponseEntity<Void> _deleteAdminBookRemoveBookId(
@@ -56,8 +50,7 @@ public interface AdminApi {
                     @ApiResponse(responseCode = "200", description = "OK")
             }
     )
-    @RequestMapping(
-            method = RequestMethod.PATCH,
+    @PatchMapping(
             value = "/admin/book/add"
     )
     default ResponseEntity<Void> _patchAdminBookAdd(
@@ -85,8 +78,7 @@ public interface AdminApi {
                     @ApiResponse(responseCode = "200", description = "OK")
             }
     )
-    @RequestMapping(
-            method = RequestMethod.POST,
+    @PostMapping(
             value = "/admin/book/add"
     )
     default ResponseEntity<Void> _postAdminBookAdd(

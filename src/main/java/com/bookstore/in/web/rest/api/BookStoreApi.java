@@ -1,6 +1,5 @@
 package com.bookstore.in.web.rest.api;
 
-import com.bookstore.in.generateddomain.ApiUtil;
 import com.bookstore.in.generateddomain.service.dto.BookDetails;
 import com.bookstore.in.generateddomain.service.dto.PurchaseRequest;
 import com.bookstore.in.generateddomain.service.dto.PurchaseResponse;
@@ -10,7 +9,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;

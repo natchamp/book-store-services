@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "book_details")
-public class Book_Details {
+public class BookDetailsDTO {
     @Id
     //@Column(name = "id")
     private String id;
@@ -23,9 +23,6 @@ public class Book_Details {
 
     @Column(name = "price")
     private String price;
-
-    public Book_Details() {
-    }
 
     public String getId() {
         return id;
